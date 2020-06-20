@@ -8,7 +8,7 @@ resource "kubernetes_pod" "pod1" {
 
   spec {
     container {
-      image ="vimal13/apache-webserver-php"
+      image ="hello-world"
      name  = "web"
 }
 }
