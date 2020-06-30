@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+         name: replicaset1
+
+spec:
+   replicas: 2
+   selector:
+        matchLabels:
+          env: dev
+          dc: IN
+          app: web
+        matchExpressions:
+             - { key: dc , operator: In , values: [ IN , US ] }
+             - { key: env , operator: In , values: [ dev ] }
+             - { key: app , operator: In , values: [ web ]}
+
+   template:
+        metadata:
+             name: pod1
+             labels:
+                  env: dev
+                  dc: IN
+                  app: web
+        spec:
+             containers:
+             - name: "smallimage"
+               image: "vimal13/apache-webserver-php"
+             restartPolicy: Always
