@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+       name: servicexample
+spec:
+     selector:
+               dc: IN
+     type: ClusterIP
+     ports:
+        - port: 8080
+          targetPort: 80 
